@@ -7,9 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +29,8 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
 
     private CircleImageView PresidentPic, LadiesPic;
     private TextView PresidentName, LadiesName, Year1, Year2;
+    private String Mem, MemAnniv;
+    private ProgressBar pProgress, lProgress;
 
     //<editor-fold defaultstate="collapsed" desc="unwanted">
     public AboutUsFragment() {
@@ -46,6 +52,8 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_about_us, container, false);
         PresidentPic = (CircleImageView) view.findViewById(R.id.presidentPic);
         LadiesPic = (CircleImageView) view.findViewById(R.id.ladiesPic);
+        pProgress = (ProgressBar) view.findViewById(R.id.pprogress);
+        lProgress = (ProgressBar) view.findViewById(R.id.lprogress);
         PresidentName = (TextView) view.findViewById(R.id.presidentName);
         LadiesName = (TextView) view.findViewById(R.id.ladiesName);
         Year1 = (TextView) view.findViewById(R.id.year1);
@@ -67,14 +75,42 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
                 Year2.setText(details.getYear());
                 Glide.with(AboutUsFragment.this)
                         .load(details.getPreUrl())
+                        .listener(new RequestListener<String, GlideDrawable>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                pProgress.setVisibility(View.GONE);
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                pProgress.setVisibility(View.GONE);
+                                return false;
+                            }
+                        })
                         .error(R.drawable.error)
                         .crossFade()
                         .into(PresidentPic);
                 Glide.with(AboutUsFragment.this)
                         .load(details.getLadUrl())
+                        .listener(new RequestListener<String, GlideDrawable>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                lProgress.setVisibility(View.GONE);
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                lProgress.setVisibility(View.GONE);
+                                return false;
+                            }
+                        })
                         .error(R.drawable.error)
                         .crossFade()
                         .into(LadiesPic);
+                Mem = details.getMember();
+                MemAnniv = details.getMemAnniversary();
             }
 
             @Override
@@ -89,12 +125,14 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.memberDownload:
-                String memberUrl = "https://firebasestorage.googleapis.com/v0/b/jcicentral-f8915.appspot.com/o/Files%2FNUMBER.xlsx?alt=media&token=6dff8fe4-b09e-4a2f-9de6-50c88715f8a8";
                 Intent member = new Intent(Intent.ACTION_VIEW);
-                member.setData(Uri.parse(memberUrl));
+                member.setData(Uri.parse(Mem));
                 startActivity(member);
                 break;
             case R.id.annivDownload:
+                Intent memberAnniv = new Intent(Intent.ACTION_VIEW);
+                memberAnniv.setData(Uri.parse(MemAnniv));
+                startActivity(memberAnniv);
                 break;
             case R.id.phone:
                 Intent phone = new Intent(Intent.ACTION_DIAL);

@@ -4,7 +4,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class HeadDetails {
-    private String PresidentName, LadiesName, PrePath, LadPath, PreUrl, LadUrl, Year;
+    private String PresidentName, LadiesName, PrePath, LadPath, PreUrl, LadUrl, Year, Member, MemAnniversary;
 
     public HeadDetails() {
     }//For Firebase
@@ -63,5 +63,21 @@ public class HeadDetails {
 
     public void setYear(String year) {
         Year = year;
+    }
+
+    public String getMember() {
+        return Member;
+    }
+
+    public void setMember(String member) {
+        Member = member;
+    }
+
+    public String getMemAnniversary() {
+        return MemAnniversary;
+    }
+
+    public void setMemAnniversary(String memAnniversary) {
+        MemAnniversary = memAnniversary;
     }
 }

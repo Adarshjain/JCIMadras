@@ -82,4 +82,5 @@
     <string name="download_members_anniv">2. Members Anniversary</string>
     <string name="year">Year</string>
     <string name="anniversary_remainder">Anniversary Remainder</string>
+    <string name="no_network">No Photos or Network error</string>
 </resources>
