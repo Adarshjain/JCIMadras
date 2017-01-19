@@ -8,10 +8,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.android.volley.toolbox.NetworkImageView;
 
-public class ZoomImageview extends NetworkImageView {
+public class ZoomImageview extends ImageView {
 
     // We can be in one of these 3 states
     private static final int NONE = 0;

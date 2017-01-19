@@ -1,6 +1,5 @@
 package com.jcimadras.jcimadras.Fragments;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,7 +25,6 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
 
     private CircleImageView PresidentPic, LadiesPic;
     private TextView PresidentName, LadiesName, Year1, Year2;
-    private ProgressDialog pd;
 
     //<editor-fold defaultstate="collapsed" desc="unwanted">
     public AboutUsFragment() {

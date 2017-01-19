@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -39,7 +42,6 @@ public class LogoDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logo_display);
 
-        startService(new Intent(this, Notify.class));
 
         findViewById(R.id.hideLL).setVisibility(View.VISIBLE);
         final Context context = getApplicationContext();
@@ -49,12 +51,14 @@ public class LogoDisplay extends AppCompatActivity {
         if (activeNetwork == null) {
             Message.tl(getApplicationContext(), "Please connect to Internet!!", getLayoutInflater(), findViewById(R.id.toastbg));
             findViewById(R.id.hideLL).setVisibility(View.GONE);
+            return;
         } else {
             pd = new ProgressDialog(LogoDisplay.this);
             pd.setMessage("Please wait Initialising");
             pd.setCancelable(false);
             pd.show();
             if (!getPermission()) {
+                pd.dismiss();
                 Message.tl(getApplicationContext(), "Please grant storage permission to continue!!", getLayoutInflater(), findViewById(R.id.toastbg));
                 LogoDisplay.this.finish();
                 return;
@@ -66,17 +70,7 @@ public class LogoDisplay extends AppCompatActivity {
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-        mAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful())
-                    Log.d("Sign In", "Success");
-                else {
-                    Message.L("Sign In", task.getException().toString());
-                    Log.d("Sign In", "Fail");
-                }
-            }
-        });
+        mAuth.signInAnonymously();
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("password/client");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {

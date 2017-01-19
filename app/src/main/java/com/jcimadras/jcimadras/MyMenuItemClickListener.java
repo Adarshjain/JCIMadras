@@ -209,7 +209,6 @@ public class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListene
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Message.L("line", "1");
             }
         });
     }

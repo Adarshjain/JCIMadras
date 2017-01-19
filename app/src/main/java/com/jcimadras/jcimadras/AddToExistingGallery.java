@@ -120,7 +120,6 @@ public class AddToExistingGallery extends AppCompatActivity implements View.OnCl
                 fetch();
                 break;
             case android.R.id.home:
-//                NavUtils.navigateUpFromSameTask(this);
                 this.finish();
                 break;
         }

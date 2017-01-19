@@ -35,10 +35,6 @@ public class Message {
         t.show();
     }
 
-    public static void si(Context con,String m){
-        Toast.makeText(con,m,Toast.LENGTH_SHORT).show();
-    }
-
     public static void L(String Tag, String message) {
         Log.e(Tag, message);
     }

@@ -38,7 +38,6 @@
         <activity android:name=".AddToExistingGallery" />
         <activity android:name=".EditParticipantsActivity" />
 
-        <service android:name=".Notify" />
     </application>
 
 </manifest>

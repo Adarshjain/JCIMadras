@@ -20,7 +20,7 @@ public class ImageviewFull extends AppCompatActivity {
         Bundle b = i.getExtras();
         ArrayList<String> paths = b.getStringArrayList("paths");
         int position = b.getInt("position");
-        FullscreenImageview adapter = new FullscreenImageview(ImageviewFull.this, paths);
+        FullscreenImageview adapter = new FullscreenImageview(ImageviewFull.this, paths, b.getString("stRef"));
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(position);
     }

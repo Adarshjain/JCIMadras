@@ -1,11 +1,8 @@
 package com.jcimadras.jcimadras;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,18 +16,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.jcimadras.jcimadras.Adapter.ImagesViewUrlAdapter;
 import com.jcimadras.jcimadras.Extras.Message;
-import com.jcimadras.jcimadras.Pojo.Images;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SpecificGallery extends AppCompatActivity {
 
-    private ArrayList<String> ImagePaths;
+    private ArrayList<String> ImagePaths, ImagePathName;
     private String Key;
     private ProgressDialog pd;
     private Boolean first = true;
@@ -63,6 +57,12 @@ public class SpecificGallery extends AppCompatActivity {
             this.finish();
         } else ImagePaths = new ArrayList<>(Arrays.asList(path.split(",")));
 
+        String pathName = b.getString("imgPathName");
+        if (pathName == null) {
+            Message.ts(this, "Error!!", getLayoutInflater(), findViewById(R.id.toastbg));
+            this.finish();
+        } else ImagePathName = new ArrayList<>(Arrays.asList(pathName.split(",")));
+
         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("Gallery/" + Key + "/imageUrl");
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -87,7 +87,7 @@ public class SpecificGallery extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
         ImagesViewUrlAdapter adapter = new ImagesViewUrlAdapter(this, Key, findViewById(R.id.toastbg));
-        adapter.setImagesList(ImagePaths);
+        adapter.setImagesList(ImagePaths, ImagePathName);
         mRecyclerView.setAdapter(adapter);
 
     }

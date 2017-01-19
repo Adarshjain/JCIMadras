@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class ImagesViewHolder extends RecyclerView.ViewHolder {
     ImageButton OverflowMenu;
     RelativeLayout NameLL;
     public TextView Name;
+    public ProgressBar progressBar;
 
     ImagesViewHolder(View view) {
         super(view);
@@ -22,5 +24,6 @@ public class ImagesViewHolder extends RecyclerView.ViewHolder {
         NameLL = (RelativeLayout) view.findViewById(R.id.Namell);
         Name = (TextView) view.findViewById(R.id.Name);
         OverflowMenu = (ImageButton) view.findViewById(R.id.overflow);
+        progressBar = (ProgressBar) view.findViewById(R.id.progress);
     }
 }

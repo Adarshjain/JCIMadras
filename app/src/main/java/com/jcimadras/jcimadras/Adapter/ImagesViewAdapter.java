@@ -74,8 +74,7 @@ public class ImagesViewAdapter extends RecyclerView.Adapter<ImagesViewHolder> {
                     alertDialog.show();
                 }
             });
-        } catch (IOException IOE) {
-            Message.L("Recycler", "" + IOE);
+        } catch (IOException ignored) {
         }
     }
 
