@@ -6,6 +6,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
@@ -26,7 +27,6 @@ public class FullscreenImageview extends PagerAdapter {
     private ArrayList<String> mPaths = new ArrayList<>();
     private String stRef;
     private StorageReference storRef;
-    private ProgressBar progressBar;
 
     public FullscreenImageview(Activity activity, ArrayList<String> paths, String stRef) {
         this.mActivity = activity;
@@ -51,7 +51,7 @@ public class FullscreenImageview extends PagerAdapter {
         LayoutInflater layoutInflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.imageview_adapter, container, false);
         NetView = (ZoomImageview) view.findViewById(R.id.net_imageview);
-        progressBar = (ProgressBar) view.findViewById(R.id.progress);
+        final ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progress);
 
         Glide.with(mActivity)
                 .using(new FirebaseImageLoader())
@@ -78,6 +78,6 @@ public class FullscreenImageview extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((LinearLayout) object);
+        container.removeView((FrameLayout) object);
     }
 }

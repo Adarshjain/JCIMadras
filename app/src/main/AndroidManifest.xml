@@ -28,7 +28,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB6x59bD0C9SXkXt54MSYh_2pErRXI1DSM" />
 
-        <activity android:name=".Maps.MapsActivity" />
         <activity android:name=".SpecificEvent" />
         <activity android:name=".ImageviewFull" />
         <activity android:name=".RegisterEvent" />

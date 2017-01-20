@@ -190,7 +190,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:background="@color/colorBlue"
+            android:background="@drawable/but_gb"
             android:text="@string/register"
             android:textColor="@color/white"
             android:textSize="16sp" />

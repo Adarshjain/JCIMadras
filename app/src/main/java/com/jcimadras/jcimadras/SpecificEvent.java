@@ -70,6 +70,8 @@ public class SpecificEvent extends AppCompatActivity implements View.OnClickList
             if (toolbar != null)
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
             EventName = (TextView) findViewById(R.id.eventNameDisp);
             EventDesc = (TextView) findViewById(R.id.eventDescDisp);
             Total = (TextView) findViewById(R.id.total);

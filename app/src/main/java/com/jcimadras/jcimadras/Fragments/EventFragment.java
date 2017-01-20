@@ -1,6 +1,7 @@
 package com.jcimadras.jcimadras.Fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -107,9 +108,9 @@ public class EventFragment extends Fragment {
                     }
                 });
                 if (model.getLimit() <= model.getTotal() && model.getLimit() != -1) {
-                    holder.Name.setTextColor(getResources().getColor(R.color.black));
-                    holder.Desc.setTextColor(getResources().getColor(R.color.black));
-                    holder.Date.setTextColor(getResources().getColor(R.color.black));
+                    holder.Name.setTextColor(Color.BLACK);
+                    holder.Desc.setTextColor(Color.BLACK);
+                    holder.Date.setTextColor(Color.BLACK);
                 }
                 holder.Name.setText(model.getEventName());
                 holder.Desc.setText(model.getEventDesc());

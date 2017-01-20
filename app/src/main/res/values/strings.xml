@@ -68,7 +68,7 @@
     <string name="update">Update</string>
     <string name="overflow_menu">Overflow Menu</string>
     <string name="download">Download</string>
-    <string name="developers">Designed and developed by Adarsh Jain and Sanket Jain. Contact us @</string>
+    <string name="developers">Designed and developed with ♥ by Adarsh Jain and Sanket Jain. Contact us @</string>
     <string name="info">For any project requests contact me at 8682084784 or mail me at adarshjain9628@gmail.com</string>
     <string name="facebook">Facebook</string>
     <string name="snap">Snapchat</string>
@@ -83,4 +83,10 @@
     <string name="year">Year</string>
     <string name="anniversary_remainder">Anniversary Remainder</string>
     <string name="no_network">No Photos or Network error</string>
+    <string name="event_ad">ca-app-pub-6139052770939951/2071743820</string>
+    <string name="specific_event_ad">ca-app-pub-6139052770939951/2071743820</string>
+    <string name="about_us_ad">ca-app-pub-6139052770939951/1932143024</string>
+    <string name="logo_ad">ca-app-pub-6139052770939951/6501943424</string>
+    <string name="gallery_ad">ca-app-pub-6139052770939951/7978676627</string>
+    <string name="specific_gallery_ad">ca-app-pub-6139052770939951/9455409827</string>
 </resources>

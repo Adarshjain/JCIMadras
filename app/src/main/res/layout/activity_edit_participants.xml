@@ -54,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:background="@color/colorBlue"
+                        android:background="@drawable/but_gb"
                         android:text="@string/go"
                         android:textColor="@color/white" />
                 </LinearLayout>
