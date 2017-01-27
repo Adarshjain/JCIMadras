@@ -147,8 +147,9 @@ public class RegisterEvent extends AppCompatActivity implements View.OnClickList
                 details.setGuest(guest);
                 count += guest;
             }
-            if (count == 0){
+            if (count == 0) {
                 Message.ts(this, "Please Enter Senior|Junior|Guest count", getLayoutInflater(), findViewById(R.id.toastbg));
+                pd.dismiss();
                 return;
             }
 
@@ -178,7 +179,7 @@ public class RegisterEvent extends AppCompatActivity implements View.OnClickList
                         childUpdates.put("total", total + count);
                         eveRef.updateChildren(childUpdates);
                         KeyDisplay.setText(x[x.length - 1]);
-                        Total.setText(count);
+                        Total.setText("" + count);
                         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                         ClipData clip = ClipData.newPlainText("Key", x[x.length - 1]);
                         clipboard.setPrimaryClip(clip);

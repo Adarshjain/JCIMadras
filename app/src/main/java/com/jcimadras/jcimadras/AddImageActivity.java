@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -148,7 +147,7 @@ public class AddImageActivity extends AppCompatActivity implements View.OnClickL
                         pd.dismiss();
                         Message.ts(AddImageActivity.this, "Uploaded Successfully", getLayoutInflater(), findViewById(R.id.toastbg));
                         AddImageActivity.this.finish();
-                    }else{
+                    } else {
                         if (ImagesList.size() > 1) {
                             Boolean first = true;
                             for (final Images images : ImagesList) {

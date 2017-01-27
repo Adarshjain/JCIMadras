@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,6 +54,13 @@ public class EventFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event, container, false);
         tv = (TextView) view.findViewById(R.id.empty_text);
 
+        MobileAds.initialize(getContext(), getString(R.string.logo_ad));
+        AdView mAdView = (AdView) view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        mAdView.loadAd(adRequest);
+
+
         mDatabase = FirebaseDatabase.getInstance().getReference("events");
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.eventRecycler);
@@ -72,7 +82,7 @@ public class EventFragment extends Fragment {
 
                 if (dataSnapshot == null || dataSnapshot.getChildren() == null || dataSnapshot.getValue() == null) {
                     mRecyclerView.setVisibility(View.GONE);
-                    tv.setText("No Events or Network error");
+                    tv.setText(getString(R.string.no_network));
                     tv.setVisibility(View.VISIBLE);
                 } else {
                     mRecyclerView.setVisibility(View.VISIBLE);

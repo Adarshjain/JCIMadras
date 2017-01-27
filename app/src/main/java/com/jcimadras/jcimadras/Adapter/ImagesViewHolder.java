@@ -13,12 +13,12 @@ import com.jcimadras.jcimadras.R;
 public class ImagesViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView Image;
-    ImageButton OverflowMenu;
-    RelativeLayout NameLL;
+    public ImageButton OverflowMenu;
+    public RelativeLayout NameLL;
     public TextView Name;
     public ProgressBar progressBar;
 
-    ImagesViewHolder(View view) {
+    public ImagesViewHolder(View view) {
         super(view);
         Image = (ImageView) view.findViewById(R.id.image);
         NameLL = (RelativeLayout) view.findViewById(R.id.Namell);

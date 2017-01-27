@@ -24,6 +24,9 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -63,13 +66,17 @@ public class SpecificEvent extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_specific_event);
 
         try {
+            MobileAds.initialize(this, getString(R.string.logo_ad));
+            AdView mAdView = (AdView) findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder()
+                    .build();
+            mAdView.loadAd(adRequest);
             Toolbar toolbar = (Toolbar) findViewById(R.id.appBar);
             setSupportActionBar(toolbar);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             if (toolbar != null)
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
 
             EventName = (TextView) findViewById(R.id.eventNameDisp);

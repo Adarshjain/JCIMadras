@@ -1,8 +1,8 @@
 package com.jcimadras.jcimadras.Extras;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
